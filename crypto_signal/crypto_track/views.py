@@ -1,4 +1,3 @@
-
 from django.http import JsonResponse
 from django.utils import timezone
 from django.views import generic

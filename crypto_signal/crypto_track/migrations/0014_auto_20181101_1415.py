@@ -7,7 +7,6 @@ from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('crypto_track', '0013_auto_20181101_1237'),
     ]
@@ -21,7 +20,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cryptocandle',
             name='prior_period_candle',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='crypto_track.CryptoCandle'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    to='crypto_track.CryptoCandle'),
         ),
         migrations.AlterField(
             model_name='cryptocandle',

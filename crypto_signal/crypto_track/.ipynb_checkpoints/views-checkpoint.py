@@ -75,3 +75,4 @@ def load_ccxt(request):
 
 
 def load_trends(request):
+    pass

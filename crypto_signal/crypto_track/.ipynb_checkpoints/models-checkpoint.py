@@ -65,11 +65,12 @@ class CryptoCandleHistory(models.Model):
     def __str__(self):
         return f"{self.currency_traded} | {self.period_start_timestamp} | {self.data_source}"
 
+
 class PyTrends(models.Model):
     date = models.DateField(primary_key=True)
     buy_bitcoin = models.IntegerField
     btc_usd = models.IntegerField
-    is_partial = models.BooleanField(default = False)
-    
+    is_partial = models.BooleanField(default=False)
+
     def __str__(self):
         return ""

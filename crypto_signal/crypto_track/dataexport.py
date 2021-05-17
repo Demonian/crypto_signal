@@ -1,5 +1,4 @@
 import pandas as pd
-from crypto_track.models import PyTrends, CryptoCandle, SignalSimulation, Simulation, Bank, CryptoProphet
 from django.apps import apps
 
 

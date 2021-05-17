@@ -1,9 +1,13 @@
+import sqlite3
+
+from prophet import Prophet
+
 from crypto_track.models import CryptoCandle, SignalSimulation, Simulation, CryptoProphet
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from crypto_track.transaction import BankTransaction
 from crypto_track.stocker import Stocker
-import pandas
+import pandas as pd
 
 
 class Signal():
@@ -336,7 +340,7 @@ class Signal():
         future_trend.training_years = 6
         future_trend.changepoint_prior_scale = 0.05
 
-        future, train, model = future_trend.predict_future_df(days)
+        future, train, model = future_trend.predict(self.prediction_days)
 
         # Create predictions and load table.
         return_message = self.dbload_prophet(df=future, object_type=object_type)

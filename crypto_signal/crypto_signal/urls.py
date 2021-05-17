@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from crypto_track import views
 
-
 app_name = 'crypto_track'
 
 admin.autodiscover()

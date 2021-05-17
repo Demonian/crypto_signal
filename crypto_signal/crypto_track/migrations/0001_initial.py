@@ -8,7 +8,6 @@ from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -38,7 +37,8 @@ class Migration(migrations.Migration):
                 ('period_high', models.DecimalField(decimal_places=10, max_digits=25)),
                 ('period_volume', models.DecimalField(decimal_places=10, max_digits=25)),
                 ('data_source', models.CharField(max_length=255)),
-                ('update_timestamp', models.DateTimeField(default=datetime.datetime(2018, 12, 11, 21, 18, 14, 737994, tzinfo=utc))),
+                ('update_timestamp',
+                 models.DateTimeField(default=datetime.datetime(2018, 12, 11, 21, 18, 14, 737994, tzinfo=utc))),
             ],
         ),
         migrations.CreateModel(
@@ -54,8 +54,10 @@ class Migration(migrations.Migration):
                 ('upper', models.DecimalField(decimal_places=10, max_digits=25, null=True)),
                 ('lower', models.DecimalField(decimal_places=10, max_digits=25, null=True)),
                 ('change', models.DecimalField(decimal_places=10, max_digits=25, null=True)),
-                ('update_timestamp', models.DateTimeField(default=datetime.datetime(2018, 12, 11, 21, 18, 14, 740108, tzinfo=utc))),
-                ('crypto_candle', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='crypto_track.CryptoCandle')),
+                ('update_timestamp',
+                 models.DateTimeField(default=datetime.datetime(2018, 12, 11, 21, 18, 14, 740108, tzinfo=utc))),
+                ('crypto_candle', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                                    to='crypto_track.CryptoCandle')),
             ],
         ),
         migrations.CreateModel(
@@ -73,8 +75,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('signal', models.CharField(max_length=4, null=True)),
-                ('candle_compare', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='cryptocandle_simulation_compare', to='crypto_track.CryptoCandle')),
-                ('crypto_candle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cryptocandle_simulation', to='crypto_track.CryptoCandle')),
+                ('candle_compare', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                                     related_name='cryptocandle_simulation_compare',
+                                                     to='crypto_track.CryptoCandle')),
+                ('crypto_candle',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cryptocandle_simulation',
+                                   to='crypto_track.CryptoCandle')),
             ],
         ),
         migrations.CreateModel(
@@ -99,7 +105,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cryptocandle',
             name='search_trend',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='crypto_track.PyTrends'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    to='crypto_track.PyTrends'),
         ),
         migrations.AddField(
             model_name='bank',

@@ -1,8 +1,5 @@
 from pytrends.request import TrendReq
-import pandas as pd
-import sqlite3
 from crypto_track.models import PyTrends
-from crypto_track.stocker import Prophet
 
 
 class CryptoTrends:

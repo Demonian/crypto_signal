@@ -1,4 +1,4 @@
-from crypto_track.models import CryptoCandle, Bank, SignalSimulation, Simulation
+from crypto_track.models import Bank, SignalSimulation
 from django.shortcuts import get_object_or_404
 import decimal
 from django.contrib.auth import get_user_model
@@ -80,14 +80,16 @@ class BankTransaction():
             if my_sim.signal == "BUY":
                 my_bank = Bank(signal_simulation=my_sim,
                                user=trader,
-                               crypto_bank=str(decimal.Decimal(prior_bank.cash_bank) / decimal.Decimal(my_sim.crypto_candle.period_close)),
+                               crypto_bank=str(decimal.Decimal(prior_bank.cash_bank) / decimal.Decimal(
+                                   my_sim.crypto_candle.period_close)),
                                cash_bank=str(0.0))
                 buy_switch = "BUY"
             elif my_sim.signal == "SELL":
                 my_bank = Bank(signal_simulation=my_sim,
                                user=trader,
                                crypto_bank=str(0.0),
-                               cash_bank=str(decimal.Decimal(prior_bank.crypto_bank) * decimal.Decimal(my_sim.crypto_candle.period_close)))
+                               cash_bank=str(decimal.Decimal(prior_bank.crypto_bank) * decimal.Decimal(
+                                   my_sim.crypto_candle.period_close)))
                 buy_switch = "SELL"
             my_bank.save()
 
